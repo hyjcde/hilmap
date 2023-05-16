@@ -3,8 +3,8 @@ const tokens = {
   admin: {
     token: 'admin-token'
   },
-  editor: {
-    token: 'editor-token'
+  endUser: {
+    token: 'endUser-token'
   }
 }
 
@@ -12,15 +12,20 @@ const users = {
   'admin-token': {
     roles: ['admin'],
     introduction: 'I am a super administrator',
-    avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+    avatar: '/favicon.ico',
     name: 'Super Admin'
   },
-  'editor-token': {
+  'endUser-token': {
     roles: ['editor'],
-    introduction: 'I am an editor',
-    avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
-    name: 'Normal Editor'
+    introduction: 'I am an end user',
+    avatar: '/user.png',
+    name: 'Normal End User'
   }
+}
+
+const passwords = {
+  admin: '110311',
+  endUser: '110311'
 }
 
 module.exports = [
@@ -29,8 +34,16 @@ module.exports = [
     url: '/vue-element-admin/user/login',
     type: 'post',
     response: config => {
-      const { username } = config.body
-      const token = tokens[username]
+      const { username, password } = config.body
+      let tokenKey = ''
+
+      if (username === 'admin' && password === passwords.admin) {
+        tokenKey = 'admin'
+      } else if (username === 'endUser' && password === passwords.endUser) {
+        tokenKey = 'endUser'
+      }
+
+      const token = tokens[tokenKey]
 
       // mock error
       if (!token) {
@@ -45,6 +58,7 @@ module.exports = [
         data: token
       }
     }
+
   },
 
   // get user info

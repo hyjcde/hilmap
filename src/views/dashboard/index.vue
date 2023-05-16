@@ -1,6 +1,8 @@
 <template>
   <div class="dashboard-container">
-    <component :is="currentRole" />
+
+    <r-o-s-topic />
+    <!--    <component :is="currentRole" />-->
   </div>
 </template>
 
@@ -8,10 +10,11 @@
 import { mapGetters } from 'vuex'
 import adminDashboard from './admin'
 import editorDashboard from './editor'
+import ROSTopic from '@/components/ROSComponents/ROStopic'
 
 export default {
   name: 'Dashboard',
-  components: { adminDashboard, editorDashboard },
+  components: { ROSTopic, adminDashboard, editorDashboard },
   data() {
     return {
       currentRole: 'adminDashboard'

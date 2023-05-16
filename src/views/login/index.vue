@@ -3,7 +3,7 @@
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">Login Form</h3>
+        <h1 class="title">无人机室内巡检可视化软件</h1>
       </div>
 
       <el-form-item prop="username">
@@ -45,16 +45,16 @@
         </el-form-item>
       </el-tooltip>
 
-      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
+      <el-button :loading="loading" type="warning" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
 
-      <div style="position:relative">
+      <div style="position:relative" hidden>
         <div class="tips">
           <span>Username : admin</span>
-          <span>Password : any</span>
+          <span>Password : </span>
         </div>
         <div class="tips">
-          <span style="margin-right:18px;">Username : editor</span>
-          <span>Password : any</span>
+          <span style="margin-right:18px;">Username : endUser</span>
+          <span>Password : </span>
         </div>
 
         <el-button class="thirdparty-button" type="primary" @click="showDialog=true">
@@ -97,8 +97,8 @@ export default {
     }
     return {
       loginForm: {
-        username: 'admin',
-        password: '111111'
+        username: '',
+        password: ''
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
@@ -177,25 +177,25 @@ export default {
         }
         return acc
       }, {})
+    },
+    afterQRScan() {
+      if (e.key === 'x-admin-oauth-code') {
+        const code = getQueryObject(e.newValue)
+        const codeMap = {
+          wechat: 'code',
+          tencent: 'code'
+        }
+        const type = codeMap[this.auth_type]
+        const codeName = code[type]
+        if (codeName) {
+          this.$store.dispatch('LoginByThirdparty', codeName).then(() => {
+            this.$router.push({ path: this.redirect || '/' })
+          })
+        } else {
+          alert('第三方登录失败')
+        }
+      }
     }
-    // afterQRScan() {
-    //   if (e.key === 'x-admin-oauth-code') {
-    //     const code = getQueryObject(e.newValue)
-    //     const codeMap = {
-    //       wechat: 'code',
-    //       tencent: 'code'
-    //     }
-    //     const type = codeMap[this.auth_type]
-    //     const codeName = code[type]
-    //     if (codeName) {
-    //       this.$store.dispatch('LoginByThirdparty', codeName).then(() => {
-    //         this.$router.push({ path: this.redirect || '/' })
-    //       })
-    //     } else {
-    //       alert('第三方登录失败')
-    //     }
-    //   }
-    // }
   }
 }
 </script>
@@ -204,7 +204,8 @@ export default {
 /* 修复input 背景不协调 和光标变色 */
 /* Detail see https://github.com/PanJiaChen/vue-element-admin/pull/927 */
 
-$bg:#283443;
+$bg: #7D2882;
+//$bg:#283443;
 $light_gray:#fff;
 $cursor: #fff;
 
@@ -248,10 +249,12 @@ $cursor: #fff;
 </style>
 
 <style lang="scss" scoped>
-$bg:#2d3a4b;
+$bg:#7D2882;
+//$bg:#2d3a4b;
 $dark_gray:#889aa4;
 $light_gray:#eee;
-
+body {
+}
 .login-container {
   min-height: 100%;
   width: 100%;
@@ -291,7 +294,7 @@ $light_gray:#eee;
     position: relative;
 
     .title {
-      font-size: 26px;
+      font-size: 32px;
       color: $light_gray;
       margin: 0px auto 40px auto;
       text-align: center;

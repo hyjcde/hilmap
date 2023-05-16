@@ -1,9 +1,19 @@
 <template>
   <div class="app-container">
     <aside>
-      The guide page is useful for some people who entered the project for the first time. You can briefly introduce the
-      features of the project. Demo is based on
-      <a href="https://github.com/kamranahmedse/driver.js" target="_blank">driver.js.</a>
+      Welcome to the Fundamental System! <br>
+      This guide will take you through the process of selecting modules, compiling code, and executing a task. <br><br>
+
+      Step 1: Select Modules<br>
+      Click on the "Modules" menu in the sidebar to view the available modules. Click on a module to select it.<br><br>
+
+      Step 2: Compile Code<br>
+      Once you have selected the desired modules, click on the "Compile" button to compile the code. This may take a few minutes, depending on the size of the project.<br><br>
+
+      Step 3: Execute Task<br>
+      After the code has been compiled, click on the "Execute Task" button to run the task on your system. You can monitor the progress of the task using the "Task Status" panel in the bottom right corner of the screen.<br><br>
+
+      Click the button below to start the guided tour.
     </aside>
     <el-button icon="el-icon-question" type="primary" @click.prevent.stop="guide">
       Show Guide

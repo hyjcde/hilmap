@@ -61,13 +61,22 @@ export default {
       this.chart = echarts.init(this.$el, 'macarons')
       this.setOptions(this.chartData)
     },
-    setOptions({ expectedData, actualData } = {}) {
+    setOptions({ expectedData, actualData, xAxisLabels, chartTitle } = {} = {}) {
       this.chart.setOption({
         xAxis: {
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          data: xAxisLabels || ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
           boundaryGap: false,
           axisTick: {
             show: false
+          }
+        },
+        title: {
+          text: chartTitle || '',
+          left: 'center',
+          top: 'bottom',
+          textStyle: {
+            fontSize: 16,
+            fontWeight: 'bold'
           }
         },
         grid: {

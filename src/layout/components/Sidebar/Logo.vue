@@ -24,8 +24,8 @@ export default {
   },
   data() {
     return {
-      title: 'Vue Element Admin',
-      logo: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png'
+      title: 'HILMAP',
+      logo: '/favicon.ico'
     }
   }
 }
@@ -46,7 +46,8 @@ export default {
   width: 100%;
   height: 50px;
   line-height: 50px;
-  background: #2b2f3a;
+  //background: #7D2882;
+  background: #F0aa23;
   text-align: center;
   overflow: hidden;
 
