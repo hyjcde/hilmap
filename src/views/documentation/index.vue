@@ -1,22 +1,46 @@
 <template>
   <div>
     <!--    <button @click="modifyOptions">Modify Options</button>-->
-    <el-table :data="options.uav" style="margin-bottom: 20vh;">
-      <el-table-column prop="name" label="Name" />
-      <el-table-column prop="description" label="Description" />
+    <el-table
+      :data="options.uav"
+      style="margin-bottom: 20vh;"
+    >
+      <el-table-column
+        prop="name"
+        label="Name"
+      />
+      <el-table-column
+        prop="description"
+        label="Description"
+      />
     </el-table>
 
-    <el-table :data="options.sensor" style="margin-bottom: 20vh;">
-      <el-table-column prop="name" label="Name" />
-      <el-table-column prop="description" label="Description" />
+    <el-table
+      :data="options.sensor"
+      style="margin-bottom: 20vh;"
+    >
+      <el-table-column
+        prop="name"
+        label="Name"
+      />
+      <el-table-column
+        prop="description"
+        label="Description"
+      />
       <el-table-column label="Actions">
         <template slot-scope="scope">
-          <el-button type="text" icon="el-icon-plus" size="small" @click="addOption('sensor')">Add</el-button>
+          <el-button
+            type="text"
+            icon="el-icon-plus"
+            size="small"
+            @click="addOption('sensor')"
+          >
+            Add
+          </el-button>
         </template>
       </el-table-column>
     </el-table>
   </div>
-
 </template>
 
 <script>

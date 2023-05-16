@@ -1,33 +1,70 @@
 <template>
   <div>
     <!--    <div ref="paperContainer" class="jointjs-container" />-->
-    <div id="myChart" style="width: 85vw; height: 60vh;" />
+    <div
+      id="myChart"
+      style="width: 85vw; height: 60vh;"
+    />
     <el-dialog
       :visible.sync="dialogVisible"
       :title="currentModuleType ? currentModuleType.toUpperCase() + ' Selection' : ''"
       width="60%"
       @close="dialogVisible = false"
     >
-      <el-table border :data="$store.state.options.options[currentModuleType]" :style="{ height: 'auto' }" :row-class-name="rowClassName(currentModuleType, ...arguments)" @row-click="selectModule(currentModuleType, ...arguments)">
-        <el-table-column prop="name" label="模块" width="180" />
-        <el-table-column prop="description" label="描述">
+      <el-table
+        border
+        :data="$store.state.options.options[currentModuleType]"
+        :style="{ height: 'auto' }"
+        :row-class-name="rowClassName(currentModuleType, ...arguments)"
+        @row-click="selectModule(currentModuleType, ...arguments)"
+      >
+        <el-table-column
+          prop="name"
+          label="模块"
+          width="180"
+        />
+        <el-table-column
+          prop="description"
+          label="描述"
+        >
           <template slot-scope="scope">
             {{ scope.row.description ? scope.row.description : '-' }}
           </template>
         </el-table-column>
       </el-table>
 
-      <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="selectModuleAndClose(currentModuleType, selectedRow)">Confirm</el-button>
+      <div
+        slot="footer"
+        class="dialog-footer"
+      >
+        <el-button @click="dialogVisible = false">
+          Cancel
+        </el-button>
+        <el-button
+          type="primary"
+          @click="selectModuleAndClose(currentModuleType, selectedRow)"
+        >
+          Confirm
+        </el-button>
       </div>
     </el-dialog>
-    <div class="actions" style="margin-top: 10px;">
-      <el-button @click="setDefault">默认</el-button>
-      <el-button type="primary" @click="submitAll">配置</el-button>
-      <el-button @click="resetAll">重选</el-button>
+    <div
+      class="actions"
+      style="margin-top: 10px;"
+    >
+      <el-button @click="setDefault">
+        默认
+      </el-button>
+      <el-button
+        type="primary"
+        @click="submitAll"
+      >
+        配置
+      </el-button>
+      <el-button @click="resetAll">
+        重选
+      </el-button>
     </div>
-
   </div>
 </template>
 

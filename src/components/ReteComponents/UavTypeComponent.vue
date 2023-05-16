@@ -1,11 +1,33 @@
 <template>
   <div>
-    <el-select v-model="value" placeholder="Select UAV Type" @change="change">
-      <el-option label="AMU UAV" value="amu" />
-      <el-option label="Cage UAV" value="cage" />
-      <el-option label="Quadcopter" value="quadcopter" :disabled="true" />
-      <el-option label="Hexacopter" value="hexacopter" :disabled="true" />
-      <el-option label="Fixed-Wing" value="fixed_wing" :disabled="true" />
+    <el-select
+      v-model="value"
+      placeholder="Select UAV Type"
+      @change="change"
+    >
+      <el-option
+        label="AMU UAV"
+        value="amu"
+      />
+      <el-option
+        label="Cage UAV"
+        value="cage"
+      />
+      <el-option
+        label="Quadcopter"
+        value="quadcopter"
+        :disabled="true"
+      />
+      <el-option
+        label="Hexacopter"
+        value="hexacopter"
+        :disabled="true"
+      />
+      <el-option
+        label="Fixed-Wing"
+        value="fixed_wing"
+        :disabled="true"
+      />
     </el-select>
   </div>
 </template>

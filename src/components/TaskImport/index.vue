@@ -1,19 +1,58 @@
 <template>
-  <div :style="taskImportStyle" style="margin: 2rem; ">
+  <div
+    :style="taskImportStyle"
+    style="margin: 2rem; "
+  >
     <div>
-      <el-button type="info" style="margin-bottom: 1vh; float: left;" @click="$emit('previous')">上一步</el-button>
-      <el-tooltip content="Take-off" placement="top">
+      <el-button
+        type="info"
+        style="margin-bottom: 1vh; float: left;"
+        @click="$emit('previous')"
+      >
+        上一步
+      </el-button>
+      <el-tooltip
+        content="Take-off"
+        placement="top"
+      >
         <!--        <el-button type="primary" icon="el-icon-caret-top" @click="takeoff">起飞</el-button>-->
-        <el-button type="primary" icon="el-icon-caret-top" :disabled="activeStep===2" @click="takeoff">Take-off</el-button>
+        <el-button
+          type="primary"
+          icon="el-icon-caret-top"
+          :disabled="activeStep===2"
+          @click="takeoff"
+        >
+          Take-off
+        </el-button>
       </el-tooltip>
 
-      <el-tooltip content="Land" placement="top">
+      <el-tooltip
+        content="Land"
+        placement="top"
+      >
         <!--        <el-button type="primary" icon="el-icon-caret-bottom" @click="land">降落</el-button>-->
-        <el-button type="primary" icon="el-icon-caret-bottom" :disabled="activeStep===2" @click="land">Land</el-button>
+        <el-button
+          type="primary"
+          icon="el-icon-caret-bottom"
+          :disabled="activeStep===2"
+          @click="land"
+        >
+          Land
+        </el-button>
       </el-tooltip>
-      <el-tooltip content="kill the sys" placement="top">
+      <el-tooltip
+        content="kill the sys"
+        placement="top"
+      >
         <!--        <el-button type="primary" @click="land">紧急停车</el-button>-->
-        <el-button type="primary" icon="el-icon-caret-bottom" :disabled="activeStep===2" @click="land">Kill</el-button>
+        <el-button
+          type="primary"
+          icon="el-icon-caret-bottom"
+          :disabled="activeStep===2"
+          @click="land"
+        >
+          Kill
+        </el-button>
       </el-tooltip>
     </div>
     <div class="task-import">
@@ -23,12 +62,32 @@
           已配置模块
           <br>
           <br>
-          <el-table :data="[{selectedModules: selectedModules}]" border stripe style="width: 100%">
-            <el-table-column prop="selectedModules.uavType" label="UAV Type" />
-            <el-table-column prop="selectedModules.sensorType" label="Sensor Type" />
-            <el-table-column prop="selectedModules.venue" label="Venue" />
-            <el-table-column prop="selectedModules.motionPlanner" label="Motion Planner" />
-            <el-table-column prop="selectedModules.taskModule" label="Task Module" />
+          <el-table
+            :data="[{selectedModules: selectedModules}]"
+            border
+            stripe
+            style="width: 100%"
+          >
+            <el-table-column
+              prop="selectedModules.uavType"
+              label="UAV Type"
+            />
+            <el-table-column
+              prop="selectedModules.sensorType"
+              label="Sensor Type"
+            />
+            <el-table-column
+              prop="selectedModules.venue"
+              label="Venue"
+            />
+            <el-table-column
+              prop="selectedModules.motionPlanner"
+              label="Motion Planner"
+            />
+            <el-table-column
+              prop="selectedModules.taskModule"
+              label="Task Module"
+            />
             <el-table-column
               prop="selectedModules.perceptionModule"
               label="Perception Module"
@@ -37,7 +96,10 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col :span="24" style="margin-top: 3vh;">
+        <el-col
+          :span="24"
+          style="margin-top: 3vh;"
+        >
           <el-card shadow="hover">
             <div slot="header">
               <span>任务控制</span>
@@ -48,9 +110,21 @@
               <el-col :span="24">
                 <el-form label-position="top">
                   <div style="float: right">
-                    <el-button v-if="!isRecording" type="primary" @click="startRecording">开始下达</el-button>
+                    <el-button
+                      v-if="!isRecording"
+                      type="primary"
+                      @click="startRecording"
+                    >
+                      开始下达
+                    </el-button>
                     <!--                    <el-button v-if="!isRecording" type="primary" @click="startRecording">Start Recording</el-button>-->
-                    <el-button v-if="isRecording" type="primary" @click="stopRecording">停止下达</el-button>
+                    <el-button
+                      v-if="isRecording"
+                      type="primary"
+                      @click="stopRecording"
+                    >
+                      停止下达
+                    </el-button>
                     <!--                    <el-button v-if="isRecording" type="primary" @click="stopRecording">Stop Recording</el-button>-->
                   </div>
                   <!--                  <div>
@@ -58,24 +132,57 @@
                     <el-button type="warning" @click="playRecord('https://files.catbox.moe/8l8rqq.wav')">JB</el-button>
                   </div>-->
                   <el-form-item label=" 语音指令下达">
-                    <el-input v-model="transcribedText" type="textarea" autosize placeholder="Your task will appear here." />
+                    <el-input
+                      v-model="transcribedText"
+                      type="textarea"
+                      autosize
+                      placeholder="Your task will appear here."
+                    />
                   </el-form-item>
                   <!--                  <el-button type="primary" style="float: right" :disabled="!transcribedText" @click="generatePlan">Generate Plan</el-button>-->
 
                   <!--                  <el-form-item label="Task Plan">-->
                   <!--                    <el-input v-model="translatedText" type="textarea" autosize placeholder="Your detailed task here." />-->
                   <!--                  </el-form-item>-->
-                  <el-button type="primary" style="float: right" :disabled="!transcribedText" @click="convertLTL">翻译</el-button>
+                  <el-button
+                    type="primary"
+                    style="float: right"
+                    :disabled="!transcribedText"
+                    @click="convertLTL"
+                  >
+                    翻译
+                  </el-button>
 
                   <el-form-item label="线性时序逻辑指令:">
-                    <el-input v-model="ltlCommand" type="textarea" placeholder="Your parsed LTL command will appear here." />
+                    <el-input
+                      v-model="ltlCommand"
+                      type="textarea"
+                      placeholder="Your parsed LTL command will appear here."
+                    />
                   </el-form-item>
-                  <el-button type="primary" @click="reset">重设</el-button>
-                  <el-button type="primary" style="float: right" :disabled="!ltlCommand" @click="executeCommand">执行</el-button>
+                  <el-button
+                    type="primary"
+                    @click="reset"
+                  >
+                    重设
+                  </el-button>
+                  <el-button
+                    type="primary"
+                    style="float: right"
+                    :disabled="!ltlCommand"
+                    @click="executeCommand"
+                  >
+                    执行
+                  </el-button>
 
                   <el-form-item label="任务规划视图">
                     <!--                <el-form-item label=" Task">-->
-                    <el-input v-model="planViewer" type="textarea" autosize placeholder="The information for planner" />
+                    <el-input
+                      v-model="planViewer"
+                      type="textarea"
+                      autosize
+                      placeholder="The information for planner"
+                    />
                   </el-form-item>
                 </el-form>
               </el-col>
@@ -83,7 +190,6 @@
           </el-card>
         </el-col>
       </el-row>
-
     </div>
   </div>
 </template>

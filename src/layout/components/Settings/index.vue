@@ -1,26 +1,63 @@
 <template>
   <div class="drawer-container">
     <div>
-      <h2 class="drawer-title">任务配置</h2>
+      <h2 class="drawer-title">
+        任务配置
+      </h2>
 
       <div style="margin: 2vh auto;">
         <!--        <el-button type="primary" style="margin-bottom: 1vh; float: left;" @click="$emit('previous')">Back</el-button>-->
-        <el-tooltip content="Take-off" placement="top">
-          <el-button type="primary" size="small" icon="el-icon-caret-top" @click="takeoff">起飞</el-button>
+        <el-tooltip
+          content="Take-off"
+          placement="top"
+        >
+          <el-button
+            type="primary"
+            size="small"
+            icon="el-icon-caret-top"
+            @click="takeoff"
+          >
+            起飞
+          </el-button>
           <!--        <el-button type="primary" icon="el-icon-caret-top" :disabled="activeStep===2" @click="takeoff">Take-off</el-button>-->
         </el-tooltip>
 
-        <el-tooltip content="Land" placement="top">
-          <el-button type="primary" size="small" icon="el-icon-caret-bottom" @click="land">降落</el-button>
+        <el-tooltip
+          content="Land"
+          placement="top"
+        >
+          <el-button
+            type="primary"
+            size="small"
+            icon="el-icon-caret-bottom"
+            @click="land"
+          >
+            降落
+          </el-button>
           <!--        <el-button type="primary" icon="el-icon-caret-bottom" :disabled="activeStep===2" @click="land">Land</el-button>-->
         </el-tooltip>
-        <el-tooltip content="kill the sys" placement="top">
-          <el-button type="primary" size="small" @click="land">紧急停车</el-button>
+        <el-tooltip
+          content="kill the sys"
+          placement="top"
+        >
+          <el-button
+            type="primary"
+            size="small"
+            @click="land"
+          >
+            紧急停车
+          </el-button>
           <!--        <el-button type="primary" icon="el-icon-caret-bottom" :disabled="activeStep===2" @click="land">Kill</el-button>-->
         </el-tooltip>
       </div>
-      <div class="task-import" style="margin: 5vh auto;">
-        <el-card shadow="hover" style="border-radius: 12px">
+      <div
+        class="task-import"
+        style="margin: 5vh auto;"
+      >
+        <el-card
+          shadow="hover"
+          style="border-radius: 12px"
+        >
           <div slot="header">
             <span>任务控制</span>
             <!--              <span>Task Control</span>-->
@@ -30,9 +67,23 @@
             <el-col :span="24">
               <el-form label-position="top">
                 <div style="float: right">
-                  <el-button v-if="!isRecording" size="small" type="primary" @click="startRecording">开始下达</el-button>
+                  <el-button
+                    v-if="!isRecording"
+                    size="small"
+                    type="primary"
+                    @click="startRecording"
+                  >
+                    开始下达
+                  </el-button>
                   <!--                    <el-button v-if="!isRecording" type="primary" @click="startRecording">Start Recording</el-button>-->
-                  <el-button v-if="isRecording" size="small" type="primary" @click="stopRecording">停止下达</el-button>
+                  <el-button
+                    v-if="isRecording"
+                    size="small"
+                    type="primary"
+                    @click="stopRecording"
+                  >
+                    停止下达
+                  </el-button>
                   <!--                    <el-button v-if="isRecording" type="primary" @click="stopRecording">Stop Recording</el-button>-->
                 </div>
                 <!--                  <div>
@@ -41,52 +92,111 @@
                                       </div>-->
                 <el-form-item label="任务">
                   <!--                <el-form-item label=" Task">-->
-                  <el-input v-model="transcribedText" type="textarea" autosize placeholder="Your task will appear here." />
+                  <el-input
+                    v-model="transcribedText"
+                    type="textarea"
+                    autosize
+                    placeholder="Your task will appear here."
+                  />
                 </el-form-item>
                 <!--                  <el-button type="primary" style="float: right" :disabled="!transcribedText" @click="generatePlan">Generate Plan</el-button>-->
 
                 <!--                  <el-form-item label="Task Plan">-->
                 <!--                    <el-input v-model="translatedText" type="textarea" autosize placeholder="Your detailed task here." />-->
                 <!--                  </el-form-item>-->
-                <el-button type="primary" style="float: right" size="small" :disabled="!transcribedText" @click="translateToLTLonline">转化</el-button>
+                <el-button
+                  type="primary"
+                  style="float: right"
+                  size="small"
+                  :disabled="!transcribedText"
+                  @click="translateToLTLonline"
+                >
+                  转化
+                </el-button>
                 <!--                <el-button type="primary" style="float: right" :disabled="!transcribedText" @click="convertLTL">Translate</el-button>-->
 
                 <el-form-item label="Parsed LTL Command:">
-                  <el-input v-model="ltlCommand" type="textarea" placeholder="转换后的LTL公式，如." />
+                  <el-input
+                    v-model="ltlCommand"
+                    type="textarea"
+                    placeholder="转换后的LTL公式，如."
+                  />
                 </el-form-item>
-                <el-button type="primary" size="small" @click="reset">重制</el-button>
+                <el-button
+                  type="primary"
+                  size="small"
+                  @click="reset"
+                >
+                  重制
+                </el-button>
                 <!--                <el-button type="primary" @click="reset">Reset</el-button>-->
                 <!--                <el-button type="primary" style="float: right" :disabled="!ltlCommand" @click="executeCommand">Execute</el-button>-->
-                <el-button type="primary" style="float: right" :disabled="!ltlCommand" size="small" @click="executeCommand">运行</el-button>
+                <el-button
+                  type="primary"
+                  style="float: right"
+                  :disabled="!ltlCommand"
+                  size="small"
+                  @click="executeCommand"
+                >
+                  运行
+                </el-button>
                 <el-form-item label="任务规划视图">
                   <!--                <el-form-item label=" Task">-->
-                  <el-input v-model="planViewer" type="textarea" autosize placeholder="任务规划信息" />
+                  <el-input
+                    v-model="planViewer"
+                    type="textarea"
+                    autosize
+                    placeholder="任务规划信息"
+                  />
                 </el-form-item>
               </el-form>
             </el-col>
           </el-row>
         </el-card>
       </div>
-      <div v-show="false" class="drawer-item">
+      <div
+        v-show="false"
+        class="drawer-item"
+      >
         <span>Theme Color</span>
-        <theme-picker style="float: right;height: 26px;margin: -3px 8px 0 0;" @change="themeChange" />
+        <theme-picker
+          style="float: right;height: 26px;margin: -3px 8px 0 0;"
+          @change="themeChange"
+        />
       </div>
 
-      <div v-show="false" class="drawer-item">
+      <div
+        v-show="false"
+        class="drawer-item"
+      >
         <span>Open Tags-View</span>
-        <el-switch v-model="tagsView" class="drawer-switch" />
+        <el-switch
+          v-model="tagsView"
+          class="drawer-switch"
+        />
       </div>
 
-      <div v-show="false" class="drawer-item">
+      <div
+        v-show="false"
+        class="drawer-item"
+      >
         <span>Fixed Header</span>
-        <el-switch v-model="fixedHeader" class="drawer-switch" />
+        <el-switch
+          v-model="fixedHeader"
+          class="drawer-switch"
+        />
       </div>
 
-      <div v-show="false" class="drawer-item">
+      <div
+        v-show="false"
+        class="drawer-item"
+      >
         <span>Sidebar Logo</span>
-        <el-switch v-model="sidebarLogo" class="drawer-switch" />
+        <el-switch
+          v-model="sidebarLogo"
+          class="drawer-switch"
+        />
       </div>
-
     </div>
   </div>
 </template>

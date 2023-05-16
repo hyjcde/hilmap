@@ -4,8 +4,17 @@
     <el-card style="margin: 5vh; padding: 2vh; border-radius: 25px">
       <h1>巡检系统运行状况</h1>
       <div style="margin-top: 2vh;">
-        <el-input v-model="url" placeholder="输入连接地址，如 ws://172.245.79.240:9090" style="width: 20vw;  float: left;" />
-        <el-button type="primary" @click="initROSConnection">连接</el-button>
+        <el-input
+          v-model="url"
+          placeholder="输入连接地址，如 ws://172.245.79.240:9090"
+          style="width: 20vw;  float: left;"
+        />
+        <el-button
+          type="primary"
+          @click="initROSConnection"
+        >
+          连接
+        </el-button>
         <el-table
           :data="topics"
           height="400"
@@ -15,11 +24,27 @@
           :default-sort="{ prop: 'publisherCount', order: 'descending' }"
           @sort-change="onSortChange"
         >
-          <el-table-column prop="id" label="ID" width="50" />
-          <el-table-column prop="name" label="订阅话题名" />
-          <el-table-column prop="type" label="订阅消息类型" />
-          <el-table-column prop="publisherCount" label="发布者" />
-          <el-table-column prop="subscriberCount" label="订阅者" />
+          <el-table-column
+            prop="id"
+            label="ID"
+            width="50"
+          />
+          <el-table-column
+            prop="name"
+            label="订阅话题名"
+          />
+          <el-table-column
+            prop="type"
+            label="订阅消息类型"
+          />
+          <el-table-column
+            prop="publisherCount"
+            label="发布者"
+          />
+          <el-table-column
+            prop="subscriberCount"
+            label="订阅者"
+          />
         </el-table>
       </div>
     </el-card>

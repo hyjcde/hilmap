@@ -1,12 +1,33 @@
 <template>
   <div class="sensor-type-component">
     <h5>Sensor Type</h5>
-    <el-select v-model="value" placeholder="Select Sensor Type">
-      <el-option label="IMU" value="imu" />
-      <el-option label="GPS" value="gps" />
-      <el-option label="Lidar" value="lidar" :disabled="true" />
-      <el-option label="Camera" value="camera" :disabled="true" />
-      <el-option label="Radar" value="radar" :disabled="true" />
+    <el-select
+      v-model="value"
+      placeholder="Select Sensor Type"
+    >
+      <el-option
+        label="IMU"
+        value="imu"
+      />
+      <el-option
+        label="GPS"
+        value="gps"
+      />
+      <el-option
+        label="Lidar"
+        value="lidar"
+        :disabled="true"
+      />
+      <el-option
+        label="Camera"
+        value="camera"
+        :disabled="true"
+      />
+      <el-option
+        label="Radar"
+        value="radar"
+        :disabled="true"
+      />
     </el-select>
   </div>
 </template>

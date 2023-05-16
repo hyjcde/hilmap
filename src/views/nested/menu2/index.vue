@@ -7,16 +7,29 @@
 
     <div>
       <label for="chat-input">You:</label>
-      <input id="chat-input" type="text">
+      <input
+        id="chat-input"
+        type="text"
+      >
     </div>
 
     <div>
       <label for="chat-output">AI:</label>
-      <textarea id="chat-output" readonly />
+      <textarea
+        id="chat-output"
+        readonly
+      />
     </div>
 
-    <button id="record-button" onclick="recordAndTranscribe()">Record</button>
-    <button id="stop-button">Stop</button>
+    <button
+      id="record-button"
+      onclick="recordAndTranscribe()"
+    >
+      Record
+    </button>
+    <button id="stop-button">
+      Stop
+    </button>
 
     <label id="status-label" />
   </div>

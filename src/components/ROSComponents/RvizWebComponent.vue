@@ -2,9 +2,15 @@
   <div>
     <!-- RViz container goes here -->
     <div id="rvizweb-container" />
-    <el-button @click="addWaypoint">Add Waypoint</el-button>
-    <el-button @click="loadUAVTopics">Load UAV Topics</el-button>
-    <el-button @click="resetView">Reset View</el-button>
+    <el-button @click="addWaypoint">
+      Add Waypoint
+    </el-button>
+    <el-button @click="loadUAVTopics">
+      Load UAV Topics
+    </el-button>
+    <el-button @click="resetView">
+      Reset View
+    </el-button>
   </div>
 </template>
 

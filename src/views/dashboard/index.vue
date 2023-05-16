@@ -1,6 +1,5 @@
 <template>
   <div class="dashboard-container">
-
     <r-o-s-topic />
     <!--    <component :is="currentRole" />-->
   </div>

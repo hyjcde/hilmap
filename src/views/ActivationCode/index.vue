@@ -1,12 +1,21 @@
 <template>
   <div class="activation-code">
-    <h1 style="color: rgba(244,239,239,0.8); font-size: 30px; margin-bottom: 20px;">Welcome to Jack's Chatroom</h1>
+    <h1 style="color: rgba(244,239,239,0.8); font-size: 30px; margin-bottom: 20px;">
+      Welcome to Jack's Chatroom
+    </h1>
     <div class="card">
       <h2>Enter Your Activation Code</h2>
       <div class="input-group">
-        <input v-model="inputCode" type="password" placeholder="Enter activation code" maxlength="8">
+        <input
+          v-model="inputCode"
+          type="password"
+          placeholder="Enter activation code"
+          maxlength="8"
+        >
         <!--				<button @click="submitCode">Submit</button>-->
-        <NButton @click="submitCode">Submit</NButton>
+        <NButton @click="submitCode">
+          Submit
+        </NButton>
       </div>
     </div>
   </div>

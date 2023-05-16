@@ -15,7 +15,11 @@
 
       Click the button below to start the guided tour.
     </aside>
-    <el-button icon="el-icon-question" type="primary" @click.prevent.stop="guide">
+    <el-button
+      icon="el-icon-question"
+      type="primary"
+      @click.prevent.stop="guide"
+    >
       Show Guide
     </el-button>
   </div>
